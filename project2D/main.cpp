@@ -1,12 +1,12 @@
-#include "Application2D.h"
+#include "WumpusApp.h"
 
 int main() {
 	
 	// allocation
-	auto app = new Application2D();
+	auto app = new WumpusApp();
 
 	// initialise and loop
-	app->run("AIE", 1280, 720, false);
+	app->run("Wumpus", 1280, 720, false);
 
 	// deallocation
 	delete app;
