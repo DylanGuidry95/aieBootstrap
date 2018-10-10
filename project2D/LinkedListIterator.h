@@ -35,7 +35,8 @@ namespace LinkedList
 		//Postcondition: The iterator is advanced to the next node;
 		LinkedListIterator<T> operator++()
 		{
-			return LinkedListIterator<T>(new Node<T>(mCurrent->link));
+			mCurrent = mCurrent->link;
+			return *this;
 		}
 
 		//Overload the equaltiy operator
