@@ -67,8 +67,6 @@ public:
 		while (roomsDrawn <= width * height)
 		{						
 			first++->Draw(renderer);			
-			if (roomsDrawn % width == 0)
-				std::cout << std::endl;
 			roomsDrawn++;
 		}
 	}

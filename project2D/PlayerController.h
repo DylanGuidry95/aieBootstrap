@@ -38,11 +38,6 @@ public:
 		mPlayer->SetDirection(dir);		
 	}
 
-	void LateUpdate()
-	{
-
-	}
-
 	void ActionSelection(Encounter encounter)
 	{
 		if (encounter.encounter == nullptr)

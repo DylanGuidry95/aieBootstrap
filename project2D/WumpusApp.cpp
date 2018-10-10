@@ -22,7 +22,7 @@ bool WumpusApp::startup()
 	mRenderer = new aie::Renderer2D();
 	mCam = new FreelookCamera(Vector2::Create(0,0), 500);
 	mDungeon = new Dungeon();
-	mDungeon->Create(10, 10);	
+	mDungeon->Create(10, 10);
 	mPlayerController = new PlayerController();
 	mWumpus = new Wumpus();
 	mDungeon->SetPlayer(mPlayerController->GetPlayer());
