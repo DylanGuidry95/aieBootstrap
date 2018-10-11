@@ -14,6 +14,16 @@ private:
 	Wumpus *wumpus;
 	
 public:
+	Dungeon()
+	{
+		Create(5, 5);
+	}
+
+	Dungeon(int width, int height)
+	{
+		Create(width, height);
+	}
+
 	void SetPlayer(Player* p)
 	{
 		player = p;
@@ -71,9 +81,19 @@ public:
 		{
 			Tile curTile = *tile;
 			if (player->GetPosition() == curTile.GetPosition())
-				playerOffGrid = false;
+			{
+				playerOffGrid = false;								
+				curTile.AddEntity(*player);				
+			}
+			else
+				curTile.RemoveEntity(*player);
 			if (wumpus->GetPosition() == curTile.GetPosition())
-				wumpusOffGrid = false;
+			{
+				wumpusOffGrid = false;				
+				curTile.AddEntity(*wumpus);				
+			}
+			else
+				curTile.RemoveEntity(*wumpus);
 			++tile;
 		}
 		if(playerOffGrid)

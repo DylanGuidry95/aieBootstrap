@@ -65,6 +65,8 @@ namespace LinkedList
 		void DeleteNode(const T& deleteItem) override
 		{
 			Node<T> *iter = mFirst;
+			if (iter == nullptr)
+				return;
 			while (iter->link != nullptr)
 			{				
 				if (iter->mInfo == deleteItem)

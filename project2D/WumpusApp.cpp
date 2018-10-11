@@ -21,8 +21,7 @@ bool WumpusApp::startup()
 {
 	mRenderer = new aie::Renderer2D();
 	mCam = new FreelookCamera(Vector2::Create(0,0), 500);
-	mDungeon = new Dungeon();
-	mDungeon->Create(10, 10);
+	mDungeon = new Dungeon(10,10);	
 	mPlayerController = new PlayerController();
 	mWumpus = new Wumpus();
 	mDungeon->SetPlayer(mPlayerController->GetPlayer());
@@ -38,8 +37,7 @@ void WumpusApp::shutdown()
 
 void WumpusApp::update(float deltaTime)
 {
-	mTimer += deltaTime;
-	//mCam->Update(deltaTime);	
+	mTimer += deltaTime;	
 	int a = ((rand() % 4) + 1);
 	if(a == 1)
 		mWumpus->SetDirection(Direction::NORTH);

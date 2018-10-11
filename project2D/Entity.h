@@ -40,11 +40,11 @@ public:
 		mMovementDirection = Direction::NORTH;
 	}
 
-	virtual void Move() = 0;
+	virtual void Move() {};
 
-	virtual void Encounter(Entity* entity) = 0;
+	virtual void Encounter(Entity* entity) {};
 
-	virtual void TakeDamage(int amount) = 0;
+	virtual void TakeDamage(int amount) {};
 
 	void SetDirection(Direction dir)
 	{
@@ -101,5 +101,10 @@ public:
 		default:
 			break;
 		}
+	}
+
+	bool operator==(const Entity& rhs)
+	{
+		return mName == rhs.mName && mPosition == mPosition && mHealth == mHealth;
 	}
 };

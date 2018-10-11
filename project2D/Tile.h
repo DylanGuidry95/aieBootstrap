@@ -13,12 +13,14 @@ public:
 	Tile()
 	{
 		mTexture = new aie::Texture("./textures/tile.png");
+		mEntityList = new LinkedList::UnorderedLinkedList<Entity>();
 		position = Vector2::Create(0, 0);
 	}
 
 	Tile(Vector2 pos)
 	{
 		mTexture = new aie::Texture("./textures/tile.png");
+		mEntityList = new LinkedList::UnorderedLinkedList<Entity>();
 		position = pos;
 	}	
 
@@ -35,7 +37,8 @@ public:
 
 	void AddEntity(Entity& entity)
 	{
-		mEntityList->InsertLast(entity);
+		if(!mEntityList->Search(entity))
+			mEntityList->InsertLast(entity);
 	}
 
 	void RemoveEntity(Entity& entity)
