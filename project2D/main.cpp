@@ -14,14 +14,15 @@ int main()
 	bool searchB = list->Search(5);
 
 	list->DeleteNode(2);
-	LinkedList::UnorderedLinkedList<int> newList = 
-		(LinkedList::UnorderedLinkedList<int>&)list;
+	LinkedList::LinkedListType<int> *newList = 
+		new LinkedList::UnorderedLinkedList<int>(
+		(const LinkedList::UnorderedLinkedList<int>&)*list);
 	list->DestroyList();
-	LinkedList::LinkedListIterator<int> testA = list->Begin();
+	LinkedList::LinkedListIterator<int> testA = newList->Begin();
 	++testA;
 	++testA;
 	++testA;
-	LinkedList::LinkedListIterator<int> testB = list->End();
+	LinkedList::LinkedListIterator<int> testB = newList->End();
 	// allocation
 	auto app = new WumpusApp();
 

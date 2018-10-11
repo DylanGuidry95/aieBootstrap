@@ -144,7 +144,7 @@ namespace LinkedList
 
 		//Copy constructor
 		LinkedListType(const LinkedListType<T>& other)
-		{
+		{			
 			InitializeList();
 			CopyList(other);
 		}
@@ -163,13 +163,20 @@ namespace LinkedList
 		void CopyList(const LinkedListType<T>& otherList)
 		{
 			if(!IsEmptyList())
-				DestroyList();
-			Node<T>* iter = otherList.mFirst;
-			while (iter != nullptr)
+				DestroyList();			
+			mFirst = new Node<T>{ otherList.mFirst->mInfo, nullptr };
+			Node<T> *otherIter = otherList.mFirst;
+			mFirst = new Node<T>{ otherIter->mInfo, nullptr };
+			Node<T> *curIter = mFirst->link;
+			Node<T> *curPrev = mFirst;
+			while (otherIter->link != nullptr)
 			{
-				InsertLast(iter->mInfo);
-				iter = iter->link;
+				otherIter = otherIter->link;
+				Node<T> *newNode = new Node<T>{ otherIter->mInfo, nullptr };
+				curPrev->link = newNode;
+				curPrev = newNode;
 			}
+			mLast = curPrev;
 		}
 	};
 }
