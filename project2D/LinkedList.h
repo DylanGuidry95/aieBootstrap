@@ -19,14 +19,16 @@ namespace LinkedList
 		//Overload the assignment operator
 		const LinkedListType<T>& operator=(const LinkedListType<T>& right)
 		{
-			return LinkedListType();
+			CopyList(right)
 		}
 
 		//Initialize the lit to an empty state
 		//Postcondition: first = NULL, last = NULL, count = 0
 		void InitializeList()
 		{
-			DestroyList();
+			mFirst = nullptr;
+			mLast = nullptr;
+			mCount = 0;
 		}
 
 		//Function to determine wheather the list is empty
@@ -62,10 +64,12 @@ namespace LinkedList
 			Node<T> *iter = mFirst;
 			while (iter != nullptr)
 			{
-				if (iter == nullptr)
+				if (iter->link == nullptr)
+				{
+					delete iter;
 					break;
+				}
 				Node<T> *temp = iter->link;
-				delete iter;
 				iter = temp;
 			}
 			mFirst = nullptr;
@@ -141,6 +145,7 @@ namespace LinkedList
 		//Copy constructor
 		LinkedListType(const LinkedListType<T>& other)
 		{
+			InitializeList();
 			CopyList(other);
 		}
 
@@ -157,7 +162,8 @@ namespace LinkedList
 		//Postcondition: A copy of otherList is created and assigned to this list
 		void CopyList(const LinkedListType<T>& otherList)
 		{
-			DestroyList();
+			if(!IsEmptyList())
+				DestroyList();
 			Node<T>* iter = otherList.mFirst;
 			while (iter != nullptr)
 			{

@@ -67,9 +67,25 @@ namespace LinkedList
 			Node<T> *iter = mFirst;
 			while (iter->link != nullptr)
 			{				
+				if (iter->mInfo == deleteItem)
+				{
+					if (iter == mFirst)
+					{
+						Node<T> *temp = iter;
+						mFirst = temp->link;
+						delete temp;
+					}
+				}
 				if (iter->link->mInfo == deleteItem)
 				{
-					Node<T>* temp = iter->link;
+					Node<T>* temp = iter->link;											
+					if (iter->link == mLast)
+					{
+						mLast = iter;
+						delete iter;
+						mLast->link = nullptr;
+						break;
+					}
 					iter->link = temp->link;
 					delete temp;
 				}

@@ -14,8 +14,9 @@ int main()
 	bool searchB = list->Search(5);
 
 	list->DeleteNode(2);
-	LinkedList::LinkedListType<int> *newList = new LinkedList::UnorderedLinkedList<int>((const LinkedList::UnorderedLinkedList<int>&)list);
-	delete list;
+	LinkedList::UnorderedLinkedList<int> newList = 
+		(LinkedList::UnorderedLinkedList<int>&)list;
+	list->DestroyList();
 	LinkedList::LinkedListIterator<int> testA = list->Begin();
 	++testA;
 	++testA;
