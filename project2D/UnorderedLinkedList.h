@@ -74,6 +74,7 @@ namespace LinkedList
 						Node<T> *temp = iter;
 						mFirst = temp->link;
 						delete temp;
+						break;
 					}
 				}
 				if (iter->link->mInfo == deleteItem)
@@ -88,6 +89,7 @@ namespace LinkedList
 					}
 					iter->link = temp->link;
 					delete temp;
+					break;
 				}
 				iter = iter->link;
 			}			

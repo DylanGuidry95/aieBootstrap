@@ -1,28 +1,7 @@
 #include "WumpusApp.h"
-#include "UnorderedLinkedList.h"
 
 int main() 
 {	
-	LinkedList::LinkedListType<int> *list = new LinkedList::UnorderedLinkedList<int>();
-	list->InsertFirst(0);
-	list->InsertLast(1);
-	list->InsertLast(2);
-	list->InsertLast(3);
-	list->InsertFirst(-1);
-
-	bool searchA = list->Search(1);
-	bool searchB = list->Search(5);
-
-	list->DeleteNode(2);
-	LinkedList::LinkedListType<int> *newList = 
-		new LinkedList::UnorderedLinkedList<int>(
-		(const LinkedList::UnorderedLinkedList<int>&)*list);
-	list->DestroyList();
-	LinkedList::LinkedListIterator<int> testA = newList->Begin();
-	++testA;
-	++testA;
-	++testA;
-	LinkedList::LinkedListIterator<int> testB = newList->End();
 	// allocation
 	auto app = new WumpusApp();
 

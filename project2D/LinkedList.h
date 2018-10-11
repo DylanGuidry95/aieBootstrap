@@ -81,7 +81,7 @@ namespace LinkedList
 		//Precondition: The list must exist and must not be empty
 		//Postcondition: If the list is empty then the programs terminates; otherwise,
 		//				the first element of the list is returned
-		T Front() const
+		T& Front() const
 		{
 			assert(IsEmptyList());
 			return mFirst->mInfo;
@@ -91,7 +91,7 @@ namespace LinkedList
 		//Precondition: The list must exist and must not be empty
 		//Postcondition: If the list is empty then the programs terminates; otherwise,
 		//				the last element of the list is returned
-		T Back() const
+		T& Back() const
 		{
 			assert(IsEmptyList());
 			return mLast->mInfo;

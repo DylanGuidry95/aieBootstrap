@@ -27,7 +27,7 @@ namespace LinkedList
 		//Function to overload the dereferencing operator *
 		//Postcondition: Returns the information contained in the node;
 		T operator*()
-		{
+		{			
 			return mCurrent->mInfo;
 		}
 

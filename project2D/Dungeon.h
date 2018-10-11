@@ -3,12 +3,13 @@
 #include "Wumpus.h"
 #include "Encounter.h"
 #include "Tile.h"
+#include "input.h"
 
 class Dungeon
 {
 private:
 	int width = 2, height = 2;
-	Tile *floorPlan = new Tile[width * height];
+	LinkedList::UnorderedLinkedList<Tile> *mTiles;	
 	Player *player;
 	Wumpus *wumpus;
 	
@@ -25,11 +26,9 @@ public:
 
 	void Create(int w, int h)
 	{
+		mTiles = new LinkedList::UnorderedLinkedList<Tile>();
 		width = w;
-		height = h;
-		delete[] floorPlan;
-		floorPlan = new Tile[width * height];
-		Tile *first = &floorPlan[0];
+		height = h;			
 		int createdFloors = 0;
 		int x = 0, y = 0;
 		int targetTiles = width * height;
@@ -37,37 +36,60 @@ public:
 		{
 			x = (createdFloors % width == 0) ? 0 :  x + 1;
 			y = (createdFloors % width == 0 && createdFloors != 0) ? y + 1 : y;			
-			*first++ = Tile(Vector2::Create(x,(height - 1 - y)));
+			mTiles->InsertLast(Tile(Vector2::Create(x,(height - 1 - y))));
 			createdFloors++;
 		}
 	}
 
 	void Update()
-	{
+	{		
 		BoundsCheck();
+		LinkedList::LinkedListIterator<Tile> tile = mTiles->Begin();
+		while (tile != nullptr)
+		{
+			Tile curTile = *tile;
+			if (curTile.GetPosition() == player->GetPosition())
+			{
+				aie::Input* input = aie::Input::getInstance();
+				if (input->wasKeyPressed(aie::INPUT_KEY_P))
+				{
+					mTiles->DeleteNode(curTile);
+					tile = mTiles->Begin();
+					continue;
+				}
+			}
+			++tile;
+		}
 	}
 
 	void BoundsCheck()
 	{
-		if (player->GetPosition().xPos < 0 || player->GetPosition().xPos >= width || player->GetPosition().yPos < 0 || player->GetPosition().yPos >= height)
+		LinkedList::LinkedListIterator<Tile> tile = mTiles->Begin();
+		bool playerOffGrid = true;
+		bool wumpusOffGrid = true;
+		while (tile != nullptr)
 		{
+			Tile curTile = *tile;
+			if (player->GetPosition() == curTile.GetPosition())
+				playerOffGrid = false;
+			if (wumpus->GetPosition() == curTile.GetPosition())
+				wumpusOffGrid = false;
+			++tile;
+		}
+		if(playerOffGrid)
 			player->SetDirection(Direction(player->GetDirection() * (Direction)-1));
-		}
-
-		if (wumpus->GetPosition().xPos < 0 || wumpus->GetPosition().xPos >= width || wumpus->GetPosition().yPos < 0 || wumpus->GetPosition().yPos >= height)
-		{
+		if(wumpusOffGrid)
 			wumpus->SetDirection(Direction(wumpus->GetDirection() * (Direction)-1));
-		}
 	}
 
 	void Draw(aie::Renderer2D* renderer)
 	{
-		Tile *first = &floorPlan[0];
-		int roomsDrawn = 1;
-		while (roomsDrawn <= width * height)
+		LinkedList::LinkedListIterator<Tile> tile = mTiles->Begin();		
+		while (tile != nullptr)
 		{						
-			first++->Draw(renderer);			
-			roomsDrawn++;
+			Tile drawing = *tile;
+			drawing.Draw(renderer);
+			++tile;			
 		}
 	}
 };
