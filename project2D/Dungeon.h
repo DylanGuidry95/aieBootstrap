@@ -75,31 +75,21 @@ public:
 	void BoundsCheck()
 	{
 		LinkedList::LinkedListIterator<Tile> tile = mTiles->Begin();
-		bool playerOffGrid = true;
-		bool wumpusOffGrid = true;
 		while (tile != nullptr)
 		{
 			Tile curTile = *tile;
 			if (player->GetPosition() == curTile.GetPosition())
 			{
-				playerOffGrid = false;								
-				curTile.AddEntity(*player);				
+				return;
 			}
-			else
-				curTile.RemoveEntity(*player);
 			if (wumpus->GetPosition() == curTile.GetPosition())
 			{
-				wumpusOffGrid = false;				
-				curTile.AddEntity(*wumpus);				
+				return;
 			}
-			else
-				curTile.RemoveEntity(*wumpus);
 			++tile;
 		}
-		if(playerOffGrid)
-			player->SetDirection(Direction(player->GetDirection() * (Direction)-1));
-		if(wumpusOffGrid)
-			wumpus->SetDirection(Direction(wumpus->GetDirection() * (Direction)-1));
+		player->SetDirection(Direction(player->GetDirection() * (Direction)-1));
+		wumpus->SetDirection(Direction(wumpus->GetDirection() * (Direction)-1));
 	}
 
 	void Draw(aie::Renderer2D* renderer)

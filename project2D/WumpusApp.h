@@ -3,6 +3,7 @@
 #include "Dungeon.h"
 #include "FreelookCamera.h"
 #include "PlayerController.h"
+#include "WumpusController.h"
 
 class WumpusApp : public aie::Application
 {
@@ -12,6 +13,7 @@ private:
 	Dungeon * mDungeon;
 	Wumpus* mWumpus;
 	PlayerController *mPlayerController;
+	WumpusController *mWumpusController;
 	float mTimer;	
 
 public:

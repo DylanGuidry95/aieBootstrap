@@ -71,7 +71,7 @@ namespace LinkedList
 				return;
 			while (iter->link != nullptr)
 			{				
-				if (iter->mInfo == &deleteItem)
+				if (iter->mInfo == deleteItem)
 				{
 					if (iter == mFirst)
 					{
@@ -81,7 +81,7 @@ namespace LinkedList
 						break;
 					}
 				}
-				if (iter->link->mInfo == &deleteItem)
+				if (iter->link->mInfo == deleteItem)
 				{
 					Node<T>* temp = iter->link;
 					if (iter->link == mLast)

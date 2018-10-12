@@ -23,9 +23,10 @@ bool WumpusApp::startup()
 	mCam = new FreelookCamera(Vector2::Create(0,0), 500);
 	mDungeon = new Dungeon(10,10);	
 	mPlayerController = new PlayerController();
+	mWumpusController = new WumpusController();
 	mWumpus = new Wumpus();
 	mDungeon->SetPlayer(mPlayerController->GetPlayer());
-	mDungeon->SetWumpus(mWumpus);	
+	mDungeon->SetWumpus(mWumpusController->GetWumpus());		
 	mTimer = 0;	
 	return true;
 }
@@ -38,15 +39,7 @@ void WumpusApp::shutdown()
 void WumpusApp::update(float deltaTime)
 {
 	mTimer += deltaTime;	
-	int a = ((rand() % 4) + 1);
-	if(a == 1)
-		mWumpus->SetDirection(Direction::NORTH);
-	if (a == 2)
-		mWumpus->SetDirection(Direction::EAST);
-	if (a == 3)
-		mWumpus->SetDirection(Direction::SOUTH);
-	if (a == 4)
-		mWumpus->SetDirection(Direction::WEST);
+	mWumpusController->Update(deltaTime);
 	mPlayerController->Update();
 	mDungeon->Update();
 }
@@ -61,7 +54,7 @@ void WumpusApp::draw()
 
 	mDungeon->Draw(mRenderer);
 	mPlayerController->GetPlayer()->Draw(mRenderer);
-	mWumpus->Draw(mRenderer);
+	mWumpusController->GetWumpus()->Draw(mRenderer);
 
 	mRenderer->end();
 }

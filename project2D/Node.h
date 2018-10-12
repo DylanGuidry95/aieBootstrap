@@ -5,7 +5,7 @@ namespace LinkedList
 	template<typename T>
 	struct Node
 	{
-		T *mInfo;
+		T mInfo;
 		Node<T> *link;
 	};
 }

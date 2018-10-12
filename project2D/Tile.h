@@ -7,20 +7,17 @@ class Tile
 {
 private:
 	Vector2 position;
-	aie::Texture *mTexture;	
-	LinkedList::UnorderedLinkedList<Entity> *mEntityList;
+	aie::Texture *mTexture;		
 public:
 	Tile()
 	{
-		mTexture = new aie::Texture("./textures/tile.png");
-		mEntityList = new LinkedList::UnorderedLinkedList<Entity>();
+		mTexture = new aie::Texture("./textures/tile.png");		
 		position = Vector2::Create(0, 0);
 	}
 
 	Tile(Vector2 pos)
 	{
-		mTexture = new aie::Texture("./textures/tile.png");
-		mEntityList = new LinkedList::UnorderedLinkedList<Entity>();
+		mTexture = new aie::Texture("./textures/tile.png");		
 		position = pos;
 	}	
 
@@ -33,18 +30,6 @@ public:
 	bool operator==(const Tile& rhs)
 	{
 		return position == rhs.position;
-	}
-
-	void AddEntity(Entity& entity)
-	{
-		if(!mEntityList->Search(entity))
-			mEntityList->InsertLast(entity);
-	}
-
-	void RemoveEntity(Entity& entity)
-	{
-		if (mEntityList->Search(entity))
-			mEntityList->DeleteNode(entity);
 	}
 
 	Vector2 GetPosition()

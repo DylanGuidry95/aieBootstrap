@@ -40,11 +40,11 @@ public:
 		mMovementDirection = Direction::NORTH;
 	}
 
-	virtual void Move() {};
+	virtual void Move() = 0;
 
-	virtual void Encounter(Entity* entity) {};
+	virtual void Encounter(Entity* entity) = 0;
 
-	virtual void TakeDamage(int amount) {};
+	virtual void TakeDamage(int amount) = 0;
 
 	void SetDirection(Direction dir)
 	{
