@@ -9,7 +9,7 @@ std::ostream& operator<<(std::ostream& os, const Vector2& data)
 
 WumpusApp::WumpusApp()
 {
-	
+
 }
 
 WumpusApp::~WumpusApp()

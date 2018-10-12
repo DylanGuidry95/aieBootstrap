@@ -28,7 +28,7 @@ namespace LinkedList
 		//Postcondition: Returns the information contained in the node;
 		T operator*()
 		{			
-			return mCurrent->mInfo;
+			return *mCurrent->mInfo;
 		}
 
 		//Overload the pre-increment operator

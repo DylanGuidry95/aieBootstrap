@@ -12,6 +12,8 @@ namespace LinkedList
 		//				false is returned
 		bool Search(const T& searchItem) const override
 		{
+			if (IsEmptyList())
+				return false;
 			Node<T> *iter = mFirst;
 			while (iter != nullptr)
 			{
@@ -69,7 +71,7 @@ namespace LinkedList
 				return;
 			while (iter->link != nullptr)
 			{				
-				if (iter->mInfo == deleteItem)
+				if (iter->mInfo == &deleteItem)
 				{
 					if (iter == mFirst)
 					{
@@ -79,9 +81,9 @@ namespace LinkedList
 						break;
 					}
 				}
-				if (iter->link->mInfo == deleteItem)
+				if (iter->link->mInfo == &deleteItem)
 				{
-					Node<T>* temp = iter->link;											
+					Node<T>* temp = iter->link;
 					if (iter->link == mLast)
 					{
 						mLast = iter;

@@ -43,7 +43,8 @@ public:
 
 	void RemoveEntity(Entity& entity)
 	{
-		mEntityList->DeleteNode(entity);
+		if (mEntityList->Search(entity))
+			mEntityList->DeleteNode(entity);
 	}
 
 	Vector2 GetPosition()
