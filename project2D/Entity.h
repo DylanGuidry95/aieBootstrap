@@ -87,16 +87,20 @@ public:
 		switch (mMovementDirection)
 		{
 		case Direction::NORTH:
-			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25, (mPosition.yPos * 51) + 25, 50, 50, 3.14f);
+			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25, 
+				(mPosition.yPos * 51) + 25, 50, 50, 3.14f);
 			break;
 		case Direction::SOUTH:
-			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25, (mPosition.yPos * 51) + 25, 50, 50, 0);
+			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25, 
+				(mPosition.yPos * 51) + 25, 50, 50, 0);
 			break;
 		case Direction::EAST:
-			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25, (mPosition.yPos * 51) + 25, 50, 50, 1.57f);
+			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25,
+				(mPosition.yPos * 51) + 25, 50, 50, 1.57f);
 			break;
 		case Direction::WEST:
-			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25, (mPosition.yPos * 51) + 25, 50, 50, -1.57f);
+			renderer->drawSprite(mTexture, (mPosition.xPos * 51) + 25, 
+				(mPosition.yPos * 51) + 25, 50, 50, -1.57f);
 			break;
 		default:
 			break;

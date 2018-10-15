@@ -24,7 +24,8 @@ public:
 	void Draw(aie::Renderer2D* renderer)
 	{				
 		renderer->setUVRect(0, 0, 1, 1);
-		renderer->drawSprite(mTexture, (position.xPos * 51) + 25, (position.yPos * 51) + 25, 50, 50);
+		renderer->drawSprite(mTexture, (position.xPos * 51) + 25,
+			(position.yPos * 51) + 25, 50, 50);
 	}
 
 	bool operator==(const Tile& rhs)
