@@ -52,8 +52,7 @@ public:
 	}
 
 	void Update()
-	{		
-		BoundsCheck();
+	{			
 		LinkedList::LinkedListIterator<Tile> tile = mTiles->Begin();
 		while (tile != nullptr)
 		{
@@ -70,26 +69,31 @@ public:
 			}
 			++tile;
 		}
+		BoundsCheck();
 	}
 
 	void BoundsCheck()
 	{
 		LinkedList::LinkedListIterator<Tile> tile = mTiles->Begin();
+		bool playerIn = false;
+		bool wumpusIn = false;
 		while (tile != nullptr)
 		{
 			Tile curTile = *tile;
 			if (player->GetPosition() == curTile.GetPosition())
 			{
-				return;
+				playerIn = true;
 			}
 			if (wumpus->GetPosition() == curTile.GetPosition())
 			{
-				return;
+				wumpusIn = true;
 			}
 			++tile;
 		}
-		player->SetDirection(Direction(player->GetDirection() * (Direction)-1));
-		wumpus->SetDirection(Direction(wumpus->GetDirection() * (Direction)-1));
+		if(!playerIn)
+			player->SetDirection(Direction(player->GetDirection() * (Direction)-1));
+		if(!wumpusIn)
+			wumpus->SetDirection(Direction(wumpus->GetDirection() * (Direction)-1));
 	}
 
 	void Draw(aie::Renderer2D* renderer)
