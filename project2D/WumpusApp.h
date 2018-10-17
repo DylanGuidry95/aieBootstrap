@@ -11,7 +11,7 @@ private:
 	aie::Renderer2D *mRenderer;	
 	Camera *mCam;
 	Dungeon * mDungeon;
-	Wumpus* mWumpus;
+	Wumpus* mWumpus;	
 	PlayerController *mPlayerController;
 	WumpusController *mWumpusController;
 	float mTimer;	

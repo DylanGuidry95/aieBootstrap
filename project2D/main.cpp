@@ -2,7 +2,6 @@
 
 int main() 
 {	
-	LinkedList::LinkedListType<int> *a = new LinkedList::UnorderedLinkedList<int>();
 	// allocation
 	auto app = new WumpusApp();
 
