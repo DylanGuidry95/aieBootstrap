@@ -15,7 +15,8 @@ public:
 	GameObject(FiniteStateMachine* fsm);
 	~GameObject();
 
-	void addFrame(const std::shared_ptr<aie::Texture>& frame, float delay) { m_sprite.addFrame(frame, delay); }
+	void addFrame(const std::shared_ptr<aie::Texture>& frame, float delay) 
+	{ m_sprite.addFrame(frame, delay); }
 	
 	Vector2D getPosition() { return m_position; }
 	float getRotation() { return m_rotation; }
