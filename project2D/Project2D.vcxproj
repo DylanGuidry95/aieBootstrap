@@ -182,6 +182,7 @@
     <ClInclude Include="Node.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="UnorderedLinkedList.h" />
     <ClInclude Include="Vector2.h" />
