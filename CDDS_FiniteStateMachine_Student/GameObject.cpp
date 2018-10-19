@@ -1,8 +1,13 @@
+#include "..\Class_Example\GameObject.h"
 #include "GameObject.h"
 #include "FiniteStateMachine.h"
 #include <memory>
 
 GameObject::GameObject(FiniteStateMachine* fsm) : m_fsm(fsm), m_position({ 0.0f, 0.0f }), m_rotation(0), m_speed(50)
+{
+}
+
+GameObject::GameObject()
 {
 }
 

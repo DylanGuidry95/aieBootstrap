@@ -21,41 +21,46 @@ float Math::Vector2D::GetY()
 	return mYPos;
 }
 
-Math::Vector2D Math::Vector2D::operator+(Vector2D& other)
+Math::Vector2D Math::Vector2D::operator+(const Vector2D& other)
 {
 	return Math::Vector2D(mXPos + other.mYPos, mYPos + other.mYPos);
 }
 
-Math::Vector2D Math::Vector2D::operator+=(Vector2D& other)
+Math::Vector2D Math::Vector2D::operator+=(const Vector2D& other)
 {
 	*this = Math::Vector2D(mXPos + other.mYPos, mYPos + other.mYPos);
 	return *this;
 }
 
-Math::Vector2D Math::Vector2D::operator-(Vector2D& other)
+Math::Vector2D Math::Vector2D::operator-(const Vector2D& other)
 {
 	return Math::Vector2D(mXPos - other.mYPos, mYPos - other.mYPos);
 }
 
-Math::Vector2D Math::Vector2D::operator-=(Vector2D& other)
+Math::Vector2D Math::Vector2D::operator-=(const Vector2D& other)
 {
 	*this = Math::Vector2D(mXPos - other.mYPos, mYPos - other.mYPos);
 	return *this;
 }
 
-bool Math::Vector2D::operator==(Vector2D* other)
+Math::Vector2D Math::Vector2D::operator*(const float other)
 {
-	return(mXPos == other->mXPos && mYPos == other->mYPos);
+	return Vector2D(mXPos * other, mYPos * other);
 }
 
-bool Math::Vector2D::operator!=(Vector2D* other)
+bool Math::Vector2D::operator==(const Vector2D& other)
 {
-	return(mXPos != other->mXPos && mYPos != other->mYPos);
+	return(mXPos == other.mXPos && mYPos == other.mYPos);
 }
 
-Math::Vector2D Math::Vector2D::operator=(Vector2D* other)
+bool Math::Vector2D::operator!=(const Vector2D& other)
 {
-	mXPos = other->mXPos;
-	mYPos = other->mYPos;
+	return(mXPos != other.mXPos && mYPos != other.mYPos);
+}
+
+Math::Vector2D Math::Vector2D::operator=(const Vector2D& other)
+{
+	mXPos = other.mXPos;
+	mYPos = other.mYPos;
 	return *this;
 }

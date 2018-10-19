@@ -1,5 +1,4 @@
 #include "WumpusWorldApplication.h"
-#include "Refs.h"
 #include "Vector2D.h"
 
 int main()
@@ -8,7 +7,7 @@ int main()
 	auto app = new WumpusWorldApplication();
 
 	// initialise and loop
-	app->run("AIE", SCREEN_WIDTH, SCREEN_HEIGHT, false);
+	app->run("AIE", 1080, 720, false);
 
 	// deallocation
 	delete app;

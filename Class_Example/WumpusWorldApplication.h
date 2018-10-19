@@ -8,11 +8,14 @@ namespace aie
 	class Font;
 }
 
+class GameObject;
+
 class WumpusWorldApplication : public aie::Application
 {
 private:
 	aie::Renderer2D *mRenderer;
 	aie::Font* mDefaultFont;
+	GameObject *mPlayer;
 public:
 	WumpusWorldApplication() {}
 	~WumpusWorldApplication() {}

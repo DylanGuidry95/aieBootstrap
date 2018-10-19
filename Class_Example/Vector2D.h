@@ -11,12 +11,13 @@ namespace Math
 		Vector2D(float x, float y);
 		float GetX();
 		float GetY();
-		Vector2D operator+(Vector2D& other);
-		Vector2D operator+=(Vector2D& other);
-		Vector2D operator-(Vector2D& other);
-		Vector2D operator-=(Vector2D& other);
-		bool operator==(Vector2D* other);
-		bool operator!=(Vector2D* other);
-		Vector2D operator=(Vector2D* other);
+		Vector2D operator+(const Vector2D& other);
+		Vector2D operator+=(const Vector2D& other);
+		Vector2D operator-(const Vector2D& other);
+		Vector2D operator-=(const Vector2D& other);
+		Vector2D operator*(const float other);
+		bool operator==(const Vector2D& other);
+		bool operator!=(const Vector2D& other);
+		Vector2D operator=(const Vector2D& other);
 	};
 }
